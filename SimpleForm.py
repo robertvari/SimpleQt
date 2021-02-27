@@ -10,7 +10,6 @@ class MyForm(QWidget):
         self.setWindowTitle("My Form")
         main_layout = QVBoxLayout(self)
 
-
         # name layout
         name_layout = QHBoxLayout()
         main_layout.addLayout(name_layout)
@@ -43,6 +42,19 @@ class MyForm(QWidget):
 
         self.phone_field = QLineEdit()
         phone_layout.addWidget(self.phone_field)
+
+        save_button = QPushButton("Save")
+        main_layout.addWidget(save_button)
+
+        # signal/slots
+        save_button.clicked.connect(self.save_action)
+
+    def save_action(self):
+        name = self.name_field.text()
+        address = self.address_field.text()
+        phone = self.phone_field.text()
+
+        print(name, address, phone)
 
 
 app = QApplication(sys.argv)
